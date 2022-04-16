@@ -1,0 +1,77 @@
+﻿@page "/calculator"
+
+<h1> Calculator </h1>
+<hr />
+<div>
+    <div class="row">
+        <div class="col-md-3">
+            <p>Input 1</p>
+        </div>
+        <div class="col-md-4">
+            <input placeholder="" @bind="@num1" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            <p>Input 2</p>
+        </div>
+        <div class="col-md-4">
+            <input placeholder="" @bind="@num2" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            <p>Result</p>
+        </div>
+        <div class="col-md-4">
+            <input readonly @bind="@finalresult" />
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <button @onclick="AddNumbers" class="btn btn-light"> + </button>
+        </div>
+        <div class="col-md-2">
+            <button @onclick="SubtractNumbers" class="btn btn-primary"> − </button>
+        </div>
+        <div class="col-md-2">
+            <button @onclick="MultiplyNumbers" class="btn btn-success "> * </button>
+        </div>
+        <div class="col-md-2">
+            <button @onclick="DivideNumbers" class="btn btn-info"> / </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    string num1;
+    string num2;
+    string finalresult;
+    void AddNumbers()
+    {
+        finalresult = (Convert.ToDouble(num1) + Convert.ToDouble(num2)).ToString();
+    }
+    void SubtractNumbers()
+    {
+        finalresult = (Convert.ToDouble(num1) - Convert.ToDouble(num2)).ToString();
+    }
+    void MultiplyNumbers()
+    {
+        finalresult = (Convert.ToDouble(num1) * Convert.ToDouble(num2)).ToString();
+    }
+    void DivideNumbers()
+    {
+        if (Convert.ToDouble(num2) != 0)
+        {
+            finalresult = (Convert.ToDouble(num1) / Convert.ToDouble(num2)).ToString();
+        }
+        else
+        {
+            finalresult = "error";
+        }
+    }
+}
